@@ -1,0 +1,24 @@
+@inherits Custom.Hybrid.RazorTyped
+@*
+  Content List demo, view 3: alternating image/text with plain CSS.
+  Razor only outputs identical rows. The swap comes from this rule in
+  /content-list.css (the page stylesheet):
+
+  @@media (min-width: 992px) {
+    .alt-rows > .row:nth-child(even) > :first-child { order: 1; }
+  }
+*@
+
+<div class="vstack gap-5 alt-rows">
+  @foreach (var item in MyItems) {
+    <div class="row align-items-center g-4" @Kit.Toolbar.Default(item)>
+      <div class="col-lg-6">
+        @item.Picture("Image", imgClass: "img-fluid rounded shadow-sm")
+      </div>
+      <div class="col-lg-6">
+        <h2 class="h3">@item.String("Title")</h2>
+        <div class="text-muted">@item.Html("Text")</div>
+      </div>
+    </div>
+  }
+</div>

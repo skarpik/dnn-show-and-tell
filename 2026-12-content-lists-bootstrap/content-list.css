@@ -1,0 +1,6 @@
+/* Content List demo: swap image/text sides on every second row, large screens only.
+   Used by "Demo Alternating CSS.cshtml". Set as the page stylesheet:
+   Page Settings > Advanced > Appearance > Page Stylesheet = /content-list.css */
+@media (min-width: 992px) {
+  .alt-rows > .row:nth-child(even) > :first-child { order: 1; }
+}

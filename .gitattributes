@@ -1,0 +1,4 @@
+* text=auto
+*.cshtml text eol=crlf
+*.css text eol=crlf
+*.pdf binary

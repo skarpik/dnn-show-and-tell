@@ -1,0 +1,27 @@
+@inherits Custom.Hybrid.RazorTyped
+@*
+  Content List demo, view 2: alternating image/text with Bootstrap 5.
+  Razor counts the items and adds order-lg-last to every second row.
+  The two switches below answer "what if I want every image on one side?"
+*@
+@{
+  var textFirst = false;  // true = image on the right in row 1
+  var alternate = true;   // false = every image on the same side
+  var index = 0;
+}
+
+<div class="vstack gap-5">
+  @foreach (var item in MyItems) {
+    var isOdd = index++ % 2 == 1;
+    var mediaLast = textFirst ^ (alternate && isOdd);
+    <div class="row align-items-center g-4" @Kit.Toolbar.Default(item)>
+      <div class="col-lg-6 @(mediaLast ? "order-lg-last" : "")">
+        @item.Picture("Image", imgClass: "img-fluid rounded shadow-sm")
+      </div>
+      <div class="col-lg-6">
+        <h2 class="h3">@item.String("Title")</h2>
+        <div class="text-muted">@item.Html("Text")</div>
+      </div>
+    </div>
+  }
+</div>
